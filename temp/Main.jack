@@ -1,5 +1,6 @@
 class Main
 {
+   //main function
    function void main()
    {
       var Minesweeper game;
