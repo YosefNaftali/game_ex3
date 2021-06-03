@@ -1,5 +1,6 @@
 class Minesweeper
 {
+	// class
    field String solution;
    field String correctGuesses;
    field boolean endGame;
