@@ -1,0 +1,12 @@
+class Main
+{
+   function void main()
+   {
+      var Minesweeper game;
+
+      let game = Minesweeper.new();
+      do game.run();
+      do game.dispose();
+      return;
+   }
+}

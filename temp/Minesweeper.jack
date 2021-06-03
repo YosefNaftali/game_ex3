@@ -1,0 +1,410 @@
+class Minesweeper
+{
+   field String solution;
+   field String correctGuesses;
+   field boolean endGame;
+   field String a1;
+   field String a2;
+   field String a3;
+   field String a4;
+   field String a5;
+   field String a6;
+   field String a7;
+   field String a8;
+   field String a9;
+   field String a10;  
+   field String ar1;
+   field String ar2;
+   field String ar3;
+   field String ar4;
+   field String ar5;
+   field String ar6;
+   field String ar7;
+   field String ar8;
+   field String ar9;
+   field String ar10;
+   field int counter;
+   
+   
+   
+   constructor Minesweeper new()
+   {
+      var String play, title,solution;
+      var String seq;
+	  var int xb,xbs,xe,yb,ye;
+	  var Array a;
+      let title = "           - -   M I N E S    S W E E P E R   - - ";
+	  let play="                   L E T ' S   P L A Y !";
+	  let counter=0;
+	  do Output.printString(title);
+	  do Output.println();
+      do Output.printString(play);
+      do Output.println();
+      do Output.println();
+      do Minesweeper.drowGrid();
+	  do Screen.setColor(false);
+      do Output.println();
+	    return this;
+   }
+   
+   
+   
+   
+   
+   function void drowGrid()
+   { 
+    var int xb,xbs,xe,yb,ye;
+	
+     let xb=160;
+	  let xbs=160;
+	  let yb=28;
+	  let xe=301;
+	  let ye=249;
+	  do Output.println();
+	 do Screen.setColor(true);
+	 do Output.moveCursor(3,24);
+	  do Output.printString("1");
+	  do Output.moveCursor(3,26);
+	  do Output.printString("2");
+	  do Output.moveCursor(3,28);
+	  do Output.printString("3");
+	  do Output.moveCursor(3,31);
+	  do Output.printString("4");
+	  do Output.moveCursor(3,33);
+	  do Output.printString("5");
+	  do Output.moveCursor(3,36);
+	  do Output.printString("6");
+	  do Output.moveCursor(5,21);
+	  do Output.printString("1");
+	  do Output.moveCursor(7,21);
+	  do Output.printString("2");
+	  do Output.moveCursor(9,21);
+	  do Output.printString("3");
+      do Output.moveCursor(10,21);
+	  do Output.printString("4");
+	  do Output.moveCursor(12,21);
+	  do Output.printString("5");
+	  do Output.moveCursor(14,21);
+	  do Output.printString("6");
+	  do Output.moveCursor(16,21);
+	  do Output.printString("7");
+	  do Output.moveCursor(18,21);
+	  do Output.printString("8");
+	  do Output.moveCursor(19,21);
+	  do Output.printString("9");
+	  do Output.moveCursor(21,20);
+	  do Output.printString("10");	
+	 do Screen.setColor(true);
+	  
+	 while ( xb < xe){
+	     do Screen.drawLine(xb,ye,xb,yb);
+		 let xb=xb+20;
+		
+	  }
+	  	   while ( yb < ye){
+	     do Screen.drawLine(xbs,yb,xe-1,yb);
+		 let yb=yb+20;
+	  }
+	  return;
+	  }
+	method void resultboard(){
+	do Minesweeper.drowGrid();
+	  
+   //numbers
+      do Output.moveCursor(5,26);
+	  do Output.printString("1");
+	   do Output.moveCursor(5,31);
+	  do Output.printString("2");
+	   do Output.moveCursor(5,34);
+	  do Output.printString("2");
+	   do Output.moveCursor(7,26);
+	  do Output.printString("2");
+	   do Output.moveCursor(7,29);
+	  do Output.printString("2");
+	   do Output.moveCursor(7,31);
+	  do Output.printString("3");
+	   do Output.moveCursor(7,36);
+	  do Output.printString("3");
+	  do Output.moveCursor(8,26);
+	  do Output.printString("1");
+	   do Output.moveCursor(8,31);
+	  do Output.printString("2");
+	   do Output.moveCursor(8,33);
+	  do Output.printString("3");
+	  do Output.moveCursor(10,24);
+	  do Output.printString("1");
+	  do Output.moveCursor(10,26);
+	  do Output.printString("2");
+	 do Output.moveCursor(10,28);
+	  do Output.printString("2");
+	 do Output.moveCursor(10,31);
+	  do Output.printString("1");
+	 do Output.moveCursor(10,33);
+	  do Output.printString("2");
+	 do Output.moveCursor(12,24);
+	  do Output.printString("1");
+	   do Output.moveCursor(12,28);
+	  do Output.printString("1");
+	  do Output.moveCursor(12,33);
+	  do Output.printString("1");
+	    do Output.moveCursor(12,36);
+	  do Output.printString("1");
+      do Output.moveCursor(12,36);
+	  do Output.printString("1");
+      do Output.moveCursor(14,24);
+	  do Output.printString("1");
+      do Output.moveCursor(14,26);
+	  do Output.printString("1");
+	   do Output.moveCursor(14,28);
+	  do Output.printString("1");
+     do Output.moveCursor(16,26);
+	  do Output.printString("1");
+	   do Output.moveCursor(16,28);
+	  do Output.printString("1");
+     do Output.moveCursor(16,31);
+	  do Output.printString("1");
+     do Output.moveCursor(18,26);
+	  do Output.printString("1");
+	   do Output.moveCursor(18,31);
+	  do Output.printString("1");
+	   do Output.moveCursor(20,24);
+	  do Output.printString("1");
+	   do Output.moveCursor(20,26);
+	  do Output.printString("2");
+	   do Output.moveCursor(20,28);
+	  do Output.printString("1");
+	   do Output.moveCursor(20,31);
+	  do Output.printString("1");
+	   do Output.moveCursor(21,26);
+	  do Output.printString("1");
+//mines
+	  do Screen.drawCircle(230,60,5);
+      do Screen.drawCircle(290,60,5);
+      do Screen.drawCircle(270,80,5);
+	  do Screen.drawCircle(230,100,5);
+	  do Screen.drawCircle(290,100,5);
+	  do Screen.drawCircle(290,120,5);
+	  do Screen.drawCircle(210,140,5);
+	  do Screen.drawCircle(230,200,5);
+	  do Screen.drawCircle(190,240,5);
+	  
+	  return;
+	  	  
+   }
+   
+   
+   //start and run the game.
+  method void run()
+   {
+      var int xc, yc, num;
+	   var String s;
+	  
+      let a1="X1B22B";
+	  let a2="X223B3";
+	  let a3="X1B23B";
+	  let a4="12212B";
+	  let a5="1B1X11";
+	  let a6="111XXX";
+	  let a7="X111XX";
+	  let a8="X1B1XX";
+	  let a9="1211XX";
+	  let a10="B1XXXX";
+      let s="abba";
+      let endGame = 0;
+      let num =19;
+	  let ar1="ZZZZZZ";
+	  let ar2="ZZZZZZ";
+	  let ar3="ZZZZZZ";
+	  let ar4="ZZZZZZ";
+	  let ar5="ZZZZZZ";
+	  let ar6="ZZZZZZ";
+	  let ar7="ZZZZZZ";
+	  let ar8="ZZZZZZ";
+	  let ar9="ZZZZZZ";
+	  let ar10="ZZZZZZ";
+      
+		  
+      while(~(endGame))
+      {
+	  // L=0=76,M=1=77,N=2=78,O=3=79
+	     do Output.moveCursor(5,0);
+	     do Output.printString(" enter location");
+		 do Output.println();  
+	     let yc = Keyboard.readInt("enter y value ");
+		 do Output.println();
+		 let xc= Keyboard.readInt("enter x value ");
+		 do Output.println();
+	     
+		if (yc = 1){
+		let s= a1.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66)){do discover(1,xc);}
+		}
+		
+		if (yc = 2){
+		let s= a2.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(2,xc);}}
+		
+      if (yc = 3){
+		let s= a3.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(3,xc);}}
+		
+      if (yc = 4){
+		let s= a4.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(4,xc);}}
+		
+      if (yc = 5){
+		let s= a5.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(5,xc);}}
+      
+	  if (yc = 6){
+		let s= a6.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(6,xc);}}
+      
+	  if (yc = 7){
+		let s= a7.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(7,xc);}}
+      
+	  if (yc = 8){
+		let s= a8.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(8,xc);}}
+      
+	  if (yc = 9){
+		let s= a9.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(9,xc);}}
+      
+	  if (yc = 10){
+		let s= a1.charAt(xc-1);
+		if (s=66){ do lose();}
+		if (~(s=66))
+		{do discover(10,xc);}}
+     if (counter=51 ){ 
+	 do won();
+	 let endGame=1;} 	  
+      }
+      return;
+   }
+   
+   //Check winning condition
+   method void lose(){
+       do Screen.clearScreen();
+	    do Output.moveCursor(10,15);
+	     do Output.printString("  Y O U   L O S T !");
+		 do Sys.wait(500); 
+		do Screen.clearScreen();
+		 do Output.moveCursor(1,10);
+	     do Output.printString("  t h e   b o a r d   w a s :");
+		 do resultboard();
+		 let endGame = 1;
+		 return;
+		
+   } 
+   method void dispose()
+   {
+     do Memory.deAlloc(this);
+     return;
+   }
+method void discover( int y, int x){
+   var String ar;
+   var String a;
+   var char s, sr;
+   //if((x<7)&(x>0)&(y<11)&(y>0))
+   //{
+   
+    if(y=1){
+	let a=a1;let ar=ar1;}
+	if(y=2){
+	let a=a2;let ar=ar2;}
+   if(y=3){
+	let a=a3; let ar=ar3;}
+   if(y=4){
+	let a=a4;let ar=ar4;}
+   if(y=5){
+	let a=a5; let ar=ar5;}
+   if(y=6){
+	let a=a6; let ar=ar6;}
+   if(y=7){
+	let a=a7; let ar=ar7;}
+   if(y=8){
+	let a=a8; let ar=ar8;}
+   if(y=9){
+	let a=a9; let ar=ar9;}
+   if(y=10){
+	let a=a10; let ar=ar10;}
+   let sr=ar.charAt(x-1);
+   if (sr=90){
+   let s=a.charAt(x-1);
+   do Minesweeper.convert(x,y);
+   if (~(s=66)){
+   
+   do Output.printChar(s);do ar.setCharAt(x-1,"O"); let counter = counter+1;}
+   if(s=88){
+   if ((y=1)&(x=1)){do discover(y+1,x); do discover(y+1,x+1); do discover(y,x+1); return;}
+   if ((y=1)&(x=6)){do discover(y+1,x); do discover(y+1,x-1); do discover(y,x-1); return;}
+   if ((y=10)&(x=1)){do discover(y-1,x); do discover(y-1,x+1); do discover(y,x+1); return;}
+   if ((y=10)&(x=6)){do discover(y-1,x); do discover(y-1,x-1); do discover(y,x-1); return;}
+   
+   if ((x=1)&((~(y=1))|(~(y=10)))){do discover(y+1,x); do discover(y+1,x+1); do discover(y,x+1); do discover(y-1,x); do discover(y-1,x+1);return; }
+   if ((x=6)&((~(y=1))|(~(y=10)))){do discover(y+1,x); do discover(y+1,x-1); do discover(y,x-1); do discover(y-1,x); do discover(y-1,x-1); return;}
+   if((y=1)&((~(x=1))|(~(x=6)))){do discover(y+1,x); do discover(y+1,x+1); do discover(y+1,x-1); do discover(y,x-1); do discover(y,x+1);return; }
+   if ((y=10)&((~(x=1))|(~(x=6)))){do discover(y-1,x); do discover(y-1,x+1); do discover(y-1,x-1); do discover(y,x+1); do discover(y,x-1);return; }
+    do discover(y+1,x-1);
+	do discover(y+1,x);
+	do discover(y+1,x+1);
+	do discover(y,x-1);
+	do discover(y,x+1);
+	do discover(y-1,x-1);
+	do discover(y-1,x);
+	do discover(y-1,x+1);
+         }}
+   return;
+   }
+   
+ function void convert(int x, int y)
+   {
+    var int xc,yc;
+    if (x=1){let xc=24;}
+    if(x=2){let xc=26;}
+    if(x=3){let xc=28;}
+    if(x=4){let xc=31;}
+	if(x=5){let xc=33;}
+	if(x=6){let xc=36;}
+	if (y=1){let yc=5;}
+    if(y=2){let yc=7;}
+    if(y=3){let yc=9;}
+    if(y=4){let yc=10;}
+	if(y=5){let yc=12;}
+	if(y=6){let yc=14;}
+	if(y=7){let yc=16;}
+	if(y=8){let yc=18;}
+	if(y=9){let yc=19;}
+	if(y=10){let yc=21;}
+	do Output.moveCursor(yc,xc);
+	return;
+   }
+   method void won(){
+    do Screen.clearScreen();
+	    do Output.moveCursor(10,15);
+	     do Output.printString("  Y O U   W O N !");
+		 do Sys.wait(1000); 
+		do Screen.clearScreen();
+		
+   
+   return;}
+}
